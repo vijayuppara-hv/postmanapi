@@ -1,0 +1,25 @@
+name: Run Postman Collection
+
+on:
+  push:
+    branches:
+      - main  # Change to the branch you want to trigger this workflow
+
+jobs:
+  postman:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: v14.21.3
+
+    - name: Install Newman
+      run: npm install -g newman
+
+    - name: Run Postman Collection
+      run: C:\Users\vuppara\AppData\Roaming\npm\newman run D:\VIJAY\AUTOMATION\POSTMAN\DATASOURCES_DATAENTITIES_API_POSTMAN_AUTOMATION\PDSOv2_API_Tests.postman_collection_4.json -e D:\VIJAY\AUTOMATION\POSTMAN\DATASOURCES_DATAENTITIES_API_POSTMAN_AUTOMATION\ENV-DATASOURCES-DATAENTITIES.postman_environment
